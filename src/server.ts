@@ -8,10 +8,20 @@ const server : Server = createServer((
     const method = req.method;
 
     if(url === "/" && method === "GET"){
-        console.log("This root route");
+        res.writeHead(
+            200,
+            {"content-type":"text/plain"}
+        );
+
+        res.end("This is root route!")
     }
     else {
-        console.log("This root is not defined");
+        res.writeHead(
+            404,
+            {"content-type":"text/plain"}
+        );
+
+        res.end("This route is not defined!")
     }
 });
 

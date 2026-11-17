@@ -10,18 +10,18 @@ const server : Server = createServer((
     if(url === "/" && method === "GET"){
         res.writeHead(
             200,
-            {"content-type":"text/plain"}
+            {"content-type":"application/json"}
         );
 
-        res.end("This is root route!")
+        res.end(JSON.stringify({message : "This is root route!"}))
     }
     else {
         res.writeHead(
             404,
-            {"content-type":"text/plain"}
+            {"content-type":"application/json"}
         );
 
-        res.end("This route is not defined!")
+        res.end(JSON.stringify({message: "This route is not defined!"}))
     }
 });
 

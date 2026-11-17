@@ -1,0 +1,108 @@
+# Open the project in VS Code
+
+# npm init -y
+
+# package.json > "type": "module"
+
+# npm i -D typescript
+
+# package.json >
+
+    "main": "index.js" (x)
+    "main": "server.ts"
+
+# npx tsc --init
+
+# tsconfig setup >
+
+{
+"compilerOptions": {
+"rootDir": "./src", //uncommented
+"outDir": "./dist", //uncommented
+"module": "esnext", //changed to "esnext"
+"target": "esnext",
+"types": ["node"],
+"moduleResolution": "bundler", //add line
+// For nodejs:
+// "lib": ["esnext"],
+// "types": ["node"],
+// and npm install -D @types/node //install it
+
+    // Other Outputs
+    "sourceMap": true,
+    "declaration": true,
+    "declarationMap": true,
+
+    // Stricter Typechecking Options
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+
+    // Style Options
+    // "noImplicitReturns": true,
+    // "noImplicitOverride": true,
+    // "noUnusedLocals": true,
+    // "noUnusedParameters": true,
+    // "noFallthroughCasesInSwitch": true,
+    // "noPropertyAccessFromIndexSignature": true,
+
+    // Recommended Options
+    "strict": true,
+    // "jsx": "react-jsx",      // commented
+    "verbatimModuleSyntax": true,
+    "isolatedModules": true,
+    "noUncheckedSideEffectImports": true,
+    "moduleDetection": "force",
+    "skipLibCheck": true,
+
+},
+"include": ["src/**/*.ts"], //added
+"exclude": ["node_modules", "dist"], //added
+}
+
+# npm install -D @types/node
+
+# create "src" > "server.ts"
+
+# server.ts >
+
+import { createServer } from "http";
+
+const server = createServer((req, res)=>{
+console.log(req);
+});
+
+server.listen(5000, ()=>{
+console.log("Server is running at 5000");
+})
+
+# npm i tsx
+
+# package.json >
+
+{
+"name": "rawnodetest",
+"version": "1.0.0",
+"description": "",
+"main": "server.ts",
+"scripts": {
+
+    "dev": "tsx watch ./src/server.ts",       //change here only  <<<<<<<<<<<<
+
+    "test": "echo \"Error: no test specified\" && exit 1"
+
+},
+"keywords": [],
+"author": "",
+"license": "ISC",
+"type": "module",
+"devDependencies": {
+"@types/node": "^26.6.6",
+"typescript": "^7.0.2"
+},
+"dependencies": {
+"tsx": "^4.23.15"
+}
+}
+
+
+# npm run dev

@@ -1,38 +1,41 @@
 import type { IncomingMessage, ServerResponse } from "http";
+import { productService } from "../service/product.service";
 
-const productController = (req : IncomingMessage, res : ServerResponse) => {
+const productController = (req: IncomingMessage, res: ServerResponse) => {
     const url = req.url;
     const method = req.method;
-    
-    if(url === "/products" && method === "GET"){
+
+    if (url === "/products" && method === "GET") {
 
         const products = [
             {
-                id : 1,
+                id: 1,
                 name: "product-1",
                 price: 10,
             },
             {
-                id : 2,
+                id: 2,
                 name: "product-2",
                 price: 30,
             },
             {
-                id : 3,
+                id: 3,
                 name: "product-3",
                 price: 50,
             },
         ]
 
-        res.writeHead(200, {"content-type":"application/json"});
+        productService();
+
+        res.writeHead(200, { "content-type": "application/json" });
         res.end(JSON.stringify({
-            message : "This is products route!",
-            data : products,
+            message: "This is products route!",
+            data: products,
         }));
     }
-    
-    
-    
+
+
+
 }
 
 export default productController;

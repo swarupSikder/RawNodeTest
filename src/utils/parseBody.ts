@@ -4,15 +4,15 @@ export const bodyParser = (req: IncomingMessage): Promise<any> => {
     let body = "";
 
     return new Promise((resolve, reject) => {
-        req.on("data", (chunk)=>{
+        req.on("data", (chunk) => {
             body += chunk;
         });
 
-        req.on("end", ()=>{
-            try{
-                resolve(body);
+        req.on("end", () => {
+            try {
+                resolve(JSON.parse(body));
             }
-            catch(err){
+            catch (err) {
                 reject(err);
             }
         });

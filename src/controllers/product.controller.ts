@@ -33,6 +33,7 @@ const productController = async (req: IncomingMessage, res: ServerResponse) => {
     // CREATE A NEW PRODUCT
     else if (method === "POST" && url === "/products") {
         const body = await bodyParser(req);
+        console.log(body);
 
         res.writeHead(201, { "content-type": "application/json" });
         res.end(JSON.stringify({
